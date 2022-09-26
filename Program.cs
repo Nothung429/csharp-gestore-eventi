@@ -5,6 +5,10 @@ Console.WriteLine("Digita 2 per aggiungere un evento");
 Console.WriteLine("Digita 3 per aggiungere prenotazioni all'evento");
 Console.WriteLine("Digita 4 per disdire prenotazioni all'evento");
 
+Event myEvent = new Event("Libertà di Parola", new DateTime(2023, 7, 26), 150, 0);
+
+Console.WriteLine(myEvent);
+
 int digit = Convert.ToInt32(Console.ReadLine());
 
 switch (digit)
@@ -13,7 +17,7 @@ switch (digit)
 
         break;
     case 2:
-        CreateEvent();
+        myEvent.CreateEvent();
         break;
     case 3:
 
@@ -22,8 +26,3 @@ switch (digit)
 
         break;
 }
-
-
-//Event myEvent = new Event("Libertà di Parola", new DateTime(2022, 7, 26), 150, 0, 0);
-
-//Console.WriteLine(myEvent);

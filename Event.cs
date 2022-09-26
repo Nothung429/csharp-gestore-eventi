@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-public class Event
+﻿public class Event
 {
     public string name { get; set; }
     public DateTime date { get; set; }
