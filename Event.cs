@@ -4,17 +4,29 @@ public class Event
 {
     public string name { get; set; }
     public DateTime date { get; set; }
-    public int maxCapacity { get; set; }
+    public int maxCapacity { get; }
     public int reservedSeat { get; set; }
-    public int freeSeat { get; set; }
 
-    public Event(string name, DateTime date, int maxCapacity, int reservedSeat, int freeSeat)
+    public Event(string name, DateTime date, int maxCapacity, int reservedSeat)
     {
         this.name = name;
         this.date = date;
         this.maxCapacity = maxCapacity;
         this.reservedSeat = reservedSeat;
-        this.freeSeat = CheckFree();
+    }
+
+    public void CreateEvent()
+    {
+        Console.WriteLine("Inserisci il nome dell'evento");
+        string name = Console.ReadLine();
+        Console.WriteLine("Inserisci la data dell'evento (gg/mm/aaaa)");
+        DateTime date = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("Inserisci il numero massimo di posti dell'evento");
+        int maxCapacity = Console.Read();
+        Console.WriteLine("Inserisci il numero di prenotazioni iniziali dell'evento");
+        int reservedSeat = Console.Read();
+        Event myEvent = new Event(name, date, maxCapacity, reservedSeat);
+        Console.WriteLine(myEvent);
     }
 
     public void CheckName()
@@ -51,9 +63,9 @@ public class Event
 
     public int CheckFree()
     {
+        int freeSeat = 0;
         if (maxCapacity <= 150)
         {
-            reservedSeat = Console.Read();
             freeSeat = maxCapacity - reservedSeat;
         }
         return freeSeat;
@@ -76,9 +88,9 @@ public class Event
         string line = "\n//~~~~~~~~~~~~~~~~~Evento~~~~~~~~~~~~~~~~~//\n";
         line += "Titolo Evento: " + name + "\n";
         line += "Data: " + date.ToString("dd/MM/yyyy") + "\n";
-        line += "Posti Totali: " + maxCapacity + "\n";
+        line += "Posti Totali: " + CheckCapacity() + "\n";
         line += "Posti Prenotati: " + reservedSeat + "\n";
-        line += "Posti Disponibili: " + freeSeat + "\n";
+        line += "Posti Disponibili: " + CheckFree() + "\n";
         line += "//~~~~~~~~~~~~~~~~~#########~~~~~~~~~~~~~~~~~//\n";
 
         return line;
