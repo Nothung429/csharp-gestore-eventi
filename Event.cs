@@ -14,7 +14,7 @@ public class Event
         this.date = date;
         this.maxCapacity = maxCapacity;
         this.reservedSeat = reservedSeat;
-        this.freeSeat = freeSeat;
+        this.freeSeat = CheckFree();
     }
 
     public void CheckName()
@@ -30,44 +30,52 @@ public class Event
         DateTime todaydate = DateTime.Now;
         var today = todaydate.Date;
         this.date = this.date.Date;
-        if (this.date > today)
+        if (this.date < today)
         {
-            Console.WriteLine("Scegli una data");
+            Console.WriteLine("La data é disponibile");
         }
         else
         {
             Console.WriteLine("La data non può precedere quella odierna");
-        }
+        }        
     }
 
     public int CheckCapacity()
     {
-        if(maxCapacity > 0)
-        {
-            return maxCapacity;
-        }
-        else
+        if(maxCapacity < 0)
         {
             Console.WriteLine("Il numero dei posti non può essere negativo");
-            return maxCapacity = 0;
         }
+        return maxCapacity;
     }
 
-    public int CheckReserved()
+    public int CheckFree()
     {
-        if(maxCapacity <= 150)
+        if (maxCapacity <= 150)
         {
-            reservedSeat = 32;
+            reservedSeat = Console.Read();
             freeSeat = maxCapacity - reservedSeat;
         }
         return freeSeat;
+    }
+
+    public int addReserved()
+    {
+        reservedSeat += Convert.ToInt32(Console.ReadLine());
+        return reservedSeat;
+    }
+
+    public int removeReserved()
+    {
+        reservedSeat -= Convert.ToInt32(Console.ReadLine());
+        return reservedSeat;
     }
 
     public override string ToString()
     {
         string line = "\n//~~~~~~~~~~~~~~~~~Evento~~~~~~~~~~~~~~~~~//\n";
         line += "Titolo Evento: " + name + "\n";
-        line += "Data: " + date + "\n";
+        line += "Data: " + date.ToString("dd/MM/yyyy") + "\n";
         line += "Posti Totali: " + maxCapacity + "\n";
         line += "Posti Prenotati: " + reservedSeat + "\n";
         line += "Posti Disponibili: " + freeSeat + "\n";
