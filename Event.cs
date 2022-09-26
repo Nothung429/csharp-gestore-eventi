@@ -69,12 +69,12 @@
         }
         return freeSeat = 0;
     }
-    public int addReserved()
+    public int AddReserved()
     {
         reservedSeat += Convert.ToInt32(Console.ReadLine());
         return reservedSeat;
     }
-    public int removeReserved()
+    public int RemoveReserved()
     {
         reservedSeat -= Convert.ToInt32(Console.ReadLine());
         return reservedSeat;

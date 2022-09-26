@@ -10,8 +10,30 @@
         eventList = new List<Event>();
     }
 
-    public void addEvent(Event @event)
+    public void AddEvent(Event @event)
     {
         this.eventList.Add(@event);
+    }
+    public void FilterEvent(DateTime date)
+    {
+        foreach (Event @event in eventList)
+        {
+            if (@event.date == date)
+            {
+                Console.WriteLine(@event.name);
+            }
+            else
+            {
+                Console.WriteLine("Nessun evento disponibile");
+            }
+        }
+    }
+    public int PrintList()
+    {
+        return eventList.Count;
+    }
+    public void ClearEvent()
+    {
+        eventList.Clear();
     }
 }

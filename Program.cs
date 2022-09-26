@@ -9,12 +9,21 @@ Event myEvent = new Event("Libertà di Parola", new DateTime(2023, 7, 26), 150, 
 
 Console.WriteLine(myEvent);
 
+List<Event> myList = new List<Event>();
+myList.Add(new Event("Sagra della porchetta", new DateTime(2023, 7, 26), 1000, 65));
+myList.Add(new Event("Raduno dei testimoni di Geova", new DateTime(2023, 7, 26), 850, 780));
+myList.Add(new Event("Riunione dei liberali di destra", new DateTime(2023, 7, 26), 125, 12));
+myList.Add(new Event("Assemblea dei macellai vegani", new DateTime(2023, 7, 26), 475, 325));
+
 int digit = Convert.ToInt32(Console.ReadLine());
 
 switch (digit)
 {
     case 1:
-
+        foreach(var item in myList)
+        {
+            Console.WriteLine("Nome evento: {0}, \nData evento: {1}, \nPosti massimi: {2}, \nPosti prenotati: {3}\n", item.name, item.date, item.maxCapacity, item.reservedSeat);
+        }        
         break;
 
     case 2:
@@ -25,7 +34,7 @@ switch (digit)
         Console.WriteLine("Vuoi aggiungere dei posti all'evento? \n si/no");
         if (Console.ReadLine() == "si")
         {
-            myEvent.addReserved();
+            myEvent.AddReserved();
             Console.WriteLine(myEvent);
         }
         break;
@@ -34,7 +43,7 @@ switch (digit)
         Console.WriteLine("Vuoi rimuovere dei posti all'evento? \n si/no");
         if (Console.ReadLine() == "si")
         {
-            myEvent.removeReserved();
+            myEvent.RemoveReserved();
             Console.WriteLine(myEvent);
         }
         break;
