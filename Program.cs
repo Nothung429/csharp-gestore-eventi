@@ -5,7 +5,7 @@ Console.WriteLine("Digita 2 per aggiungere un evento");
 Console.WriteLine("Digita 3 per aggiungere prenotazioni all'evento");
 Console.WriteLine("Digita 4 per disdire prenotazioni all'evento");
 
-Event myEvent = new Event("Libertà di Parola", new DateTime(2023, 7, 26), 150, 0);
+Event myEvent = new Event("Libertà di Parola", new DateTime(2023, 7, 26), 150, 45);
 
 Console.WriteLine(myEvent);
 
@@ -23,7 +23,7 @@ switch (digit)
 
     case 3:
         Console.WriteLine("Vuoi aggiungere dei posti all'evento? \n si/no");
-        if(Console.ReadLine() == "si")
+        if (Console.ReadLine() == "si")
         {
             myEvent.addReserved();
             Console.WriteLine(myEvent);

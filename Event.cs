@@ -26,7 +26,6 @@
         Event myEvent = new Event(name, date, maxCapacity, reservedSeat);
         Console.WriteLine(myEvent);
     }
-
     public void CheckName()
     {
         if(string.IsNullOrEmpty(name))
@@ -34,7 +33,6 @@
             Console.WriteLine("Aggiungi un name all'evento");
         }
     }
-
     public DateTime CheckDate()
     {
         DateTime todaydate = DateTime.Now;
@@ -50,7 +48,6 @@
         }
         return date;
     }
-
     public int CheckCapacity()
     {
         if(maxCapacity < 0)
@@ -59,13 +56,12 @@
         }
         return maxCapacity;
     }
-
     public int CheckFree()
     {
         int freeSeat = 0;
         if (reservedSeat < maxCapacity)
         {
-            freeSeat = maxCapacity - reservedSeat;
+            freeSeat = maxCapacity + reservedSeat;
             return freeSeat;
         } else
         {
@@ -73,19 +69,16 @@
         }
         return freeSeat = 0;
     }
-
     public int addReserved()
     {
         reservedSeat += Convert.ToInt32(Console.ReadLine());
         return reservedSeat;
     }
-
     public int removeReserved()
     {
         reservedSeat -= Convert.ToInt32(Console.ReadLine());
         return reservedSeat;
     }
-
     public override string ToString()
     {
         string line = $"\n//~~~~~~~~~~~~~~~~~Evento~~~~~~~~~~~~~~~~~//\n";
