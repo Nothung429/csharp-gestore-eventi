@@ -40,3 +40,32 @@
 //Vi ricordo che man mano che andrete avanti con le altre milestones, potrete aggiungere più
 //avanti altri eventuali metodi (public e private) che vi aiutino a svolgere le funzioni richieste se
 //ritenete necessari!
+
+Console.WriteLine("Benvenuto al Gestore eventi di Peppone\n");
+
+Event myEvent = new Event("Libertà di Parola", new DateTime(2022, 7, 26), 150, 0, 150);
+
+Console.WriteLine(myEvent);
+
+//Console.WriteLine("Digita 1 per visualizzare la lista degli eventi");
+//Console.WriteLine("Digita 2 per prenotarti all'evento");
+//Console.WriteLine("Digita 3 per disdire la prenotazione all'evento");
+//Console.WriteLine("Digita 4 per aggiungere un evento");
+
+//int digit = Convert.ToInt32(Console.ReadLine());
+
+//switch (digit)
+//{
+//    case 1:
+
+//        break;
+//    case 2:
+
+//        break;
+//    case 3:
+
+//        break;
+//    case 4:
+
+//        break;
+//}
