@@ -20,9 +20,9 @@
         Console.WriteLine("Inserisci la data dell'evento (gg/mm/aaaa)");
         DateTime date = DateTime.Parse(Console.ReadLine());
         Console.WriteLine("Inserisci il numero massimo di posti dell'evento");
-        int maxCapacity = Console.Read();
+        int maxCapacity = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Inserisci il numero di prenotazioni iniziali dell'evento");
-        int reservedSeat = Console.Read();
+        int reservedSeat = Convert.ToInt32(Console.ReadLine());
         Event myEvent = new Event(name, date, maxCapacity, reservedSeat);
         Console.WriteLine(myEvent);
     }
@@ -35,19 +35,20 @@
         }
     }
 
-    public void CheckDate()
+    public DateTime CheckDate()
     {
         DateTime todaydate = DateTime.Now;
         var today = todaydate.Date;
         this.date = this.date.Date;
-        if (this.date < today)
+        if (this.date > today)
         {
             Console.WriteLine("La data é disponibile");
         }
         else
         {
             Console.WriteLine("La data non può precedere quella odierna");
-        }        
+        }
+        return date;
     }
 
     public int CheckCapacity()
@@ -62,11 +63,15 @@
     public int CheckFree()
     {
         int freeSeat = 0;
-        if (maxCapacity <= 150)
+        if (reservedSeat < maxCapacity)
         {
             freeSeat = maxCapacity - reservedSeat;
+            return freeSeat;
+        } else
+        {
+            Console.WriteLine("Il numero di posti prenotati non può superare il numero di posti massimo");
         }
-        return freeSeat;
+        return freeSeat = 0;
     }
 
     public int addReserved()
@@ -83,13 +88,13 @@
 
     public override string ToString()
     {
-        string line = "\n//~~~~~~~~~~~~~~~~~Evento~~~~~~~~~~~~~~~~~//\n";
-        line += "Titolo Evento: " + name + "\n";
-        line += "Data: " + date.ToString("dd/MM/yyyy") + "\n";
-        line += "Posti Totali: " + CheckCapacity() + "\n";
-        line += "Posti Prenotati: " + reservedSeat + "\n";
-        line += "Posti Disponibili: " + CheckFree() + "\n";
-        line += "//~~~~~~~~~~~~~~~~~#########~~~~~~~~~~~~~~~~~//\n";
+        string line = $"\n//~~~~~~~~~~~~~~~~~Evento~~~~~~~~~~~~~~~~~//\n";
+        line += $"Titolo Evento: {name} \n";
+        line += $"Data: {CheckDate()} \n";
+        line += $"Posti Totali: {CheckCapacity()} \n";
+        line += $"Posti Prenotati: {reservedSeat} \n";
+        line += $"Posti Disponibili: {CheckFree()} \n";
+        line += $"//~~~~~~~~~~~~~~~~~#########~~~~~~~~~~~~~~~~~//\n";
 
         return line;
     }

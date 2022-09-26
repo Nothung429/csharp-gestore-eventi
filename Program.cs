@@ -16,13 +16,26 @@ switch (digit)
     case 1:
 
         break;
+
     case 2:
         myEvent.CreateEvent();
         break;
+
     case 3:
-
+        Console.WriteLine("Vuoi aggiungere dei posti all'evento? \n si/no");
+        if(Console.ReadLine() == "si")
+        {
+            myEvent.addReserved();
+            Console.WriteLine(myEvent);
+        }
         break;
-    case 4:
 
+    case 4:
+        Console.WriteLine("Vuoi rimuovere dei posti all'evento? \n si/no");
+        if (Console.ReadLine() == "si")
+        {
+            myEvent.removeReserved();
+            Console.WriteLine(myEvent);
+        }
         break;
 }
